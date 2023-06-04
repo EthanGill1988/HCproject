@@ -1,38 +1,52 @@
-function choiceFunction() {
-    var x = document.getElementById('options').value;
-    document.getElementById('boxIt').innerHTML = x;
+
+var selectElement = document.getElementById('mySelect');
+
+var pointMapping = {
+    "HC DLR": 4,
+    "HC HTE": 4,
+    "HC LRE": 4,
+    "HC Rosin": 4,
+    "Ref DLR": 3,
+    "Ref LRE": 3,
+    "Ref .5gr Rosin": 3,
+    "Pruf": 6,
+    "Buzz Box": 3,
+    "Kapricorn": 4
+}
+
+var submitButton = document.getElementById('submit');
+
+submitButton.addEventListener('click', function() {
+    var selectedOption = selectElement.options[selectElement.selectedIndex].text;
+    var pointValue = pointMapping[selectedOption];
+    var quantity = document.getElementById("quantity").value;
+    var quantityValue = parseInt(quantity, 10);
+
+    if (isNaN(quantityValue) || quantityValue <= 0) {
+        console.log('Invalid quantity entered');
+        return;
+    }
+    var name = document.getElementById('name').value;
+
+    console.log('Strain: ' + name);
+    console.log('Product Type: ' + selectedOption);
+    console.log('Quantity: ' + quantityValue);
+    console.log('Total Points: ' + (pointValue * quantityValue));
+   
+});
+
+
+
+
+
+
+
     
-}
-
-function quantityFunction() {
-    var y = document.getElementById('quantity').value;
-    document.getElementById('boxIt2').innerHTML = y;
-    
-}
-
-function pointCalculator() {
-    var score = x.concat(y);
-}
 
 
 
 
 
-      let text = 'Value0';
-      $("select option").filter(function() {
-          //may want to use $.trim in here
-          return $(this).text() == text;
-        }).attr('selected', true);
 
 
 
-
-
-//var submitButtonEl = $('btn-primary');
-//var productFormEl = $('productType')
-
-//submitButtonEl.on('click', function() {
-   // if ('#productType') {
-        
-   // }
-//});

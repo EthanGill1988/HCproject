@@ -14,25 +14,24 @@
     </header>
     <div class="container mt-3">
         <h2>Job Type</h2>
-        <select id="options" onclick='choiceFunction()'>
-            <option value="0">Select</option>
-            <option value="HC DLR" id="hDlr">HC DLR</option>
-            <option value="HC HTE" id="hHte">HC HTE</option>
-            <option value="HC LRE">HC LRE</option>
-            <option value="HC Rosin">HC Rosin</option>
-            <option value="Ref DLR">Ref DLR</option>
-            <option value="Ref LRE">Ref LRE</option>
-            <option value="Ref .5gr Rosin">Ref .5gr Rosin</option>
-            <option value="Pruf">Pruf</option>
-            <option value="Buzz Box">Buzz Box</option>
-            <option value="Kapricorn">Kapricorn</option>
+        <select id="mySelect">
+            <option value="null">Select</option>
+            <option value="1" id="hDlr">HC DLR</option>
+            <option value="2" id="hHte">HC HTE</option>
+            <option value="3" id="hLre">HC LRE</option>
+            <option value="4" id="hRosin">HC Rosin</option>
+            <option value="5" id="rDlr">Ref DLR</option>
+            <option value="6" id="rLre">Ref LRE</option>
+            <option value="7" id="rRosin">Ref .5gr Rosin</option>
+            <option value="8" id="pruf">Pruf</option>
+            <option value="9" id="bBox">Buzz Box</option>
+            <option value="10" id="kap">Kapricorn</option>
         </select>
         <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="50000" required>
-            <input type="submit" id="submit" onclick='quantityFunction()'>
-        <p id="boxIt"></p>
-        <p id="boxIt2"></p>
-      </div>
+            <input type="text" id="name" name="name" placeholder="Enter name">
+            <input type="submit" id="submit">
+              </div>
     <main class="flex-row justify-center align-center col-auto p-4 bg-light">
       <section class="card card-rounded col-7 bg-white">
         <header class="card-header text-center">
