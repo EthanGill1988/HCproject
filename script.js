@@ -14,6 +14,7 @@ var pointMapping = {
     "Kapricorn": 4
 }
 
+var loggedValues = [];
 var submitButton = document.getElementById('submit');
 
 submitButton.addEventListener('click', function() {
@@ -27,12 +28,43 @@ submitButton.addEventListener('click', function() {
         return;
     }
     var name = document.getElementById('name').value;
+    var totalPoints = pointValue * quantityValue;
 
-    console.log('Strain: ' + name);
-    console.log('Product Type: ' + selectedOption);
-    console.log('Quantity: ' + quantityValue);
-    console.log('Total Points: ' + (pointValue * quantityValue));
-   
+    loggedValues.push({
+        name: name,
+        option: selectedOption,
+        quantity: quantityValue,
+        totalPoints: totalPoints
+    });
+
+    document.getElementById('name').value = '';
+    selectElement.selectedIndex = 0;
+    document.getElementById('quantity').value = '';
+
+    console.log(loggedValues);
+});
+
+var completionButton = document.getElementById('completionButton');
+
+completionButton.addEventListener('click', function() {
+    var message = 'Jobs Completed:\n';
+
+    for (var i = 0; i < loggedValues.length; i++) {
+        var loggedValue = loggedValues[i];
+        message +=
+        'Name: ' + loggedValue.name +
+        '\nProduct Type: ' + loggedValue.option +
+        '\nQuantity: ' + loggedValue.quantity +
+        '\nTotal Points: ' + loggedValue.totalPoints +
+        '\n\n';
+    }
+
+    var confirmed = confirm(message);
+    if (confirmed) {
+        console.log('User confirmed the prompt');
+    } else {
+        console.log('User canceled the prompt')
+    }
 });
 
 
