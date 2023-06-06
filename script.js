@@ -1,5 +1,9 @@
 
 var selectElement = document.getElementById('mySelect');
+var today = dayjs();
+$('.header').text(today.format('MMM D, YYYY'));
+var dayWeek = today.format('dddd MMMM D, YYYY');
+$('.header').text(dayWeek);
 
 var pointMapping = {
     "HC DLR": 4,
@@ -47,12 +51,14 @@ submitButton.addEventListener('click', function() {
 var completionButton = document.getElementById('completionButton');
 
 completionButton.addEventListener('click', function() {
-    var message = 'Jobs Completed:\n';
+    var message = 'Job Completed:\n';
+    
 
     for (var i = 0; i < loggedValues.length; i++) {
         var loggedValue = loggedValues[i];
         message +=
-        'Name: ' + loggedValue.name +
+        'Date/Time: ' + dayjs().format('MMM D, YYYY, hh:mm:ss a') +
+        '\nName: ' + loggedValue.name +
         '\nProduct Type: ' + loggedValue.option +
         '\nQuantity: ' + loggedValue.quantity +
         '\nTotal Points: ' + loggedValue.totalPoints +
