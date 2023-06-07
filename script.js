@@ -33,18 +33,21 @@ submitButton.addEventListener('click', function() {
     }
     var name = document.getElementById('name').value;
     var totalPoints = pointValue * quantityValue;
+    var timeStamp = dayjs().format('dddd MMM D, YYYY, hh:mm:ss a');
 
     loggedValues.push({
         name: name,
         option: selectedOption,
         quantity: quantityValue,
-        totalPoints: totalPoints
+        totalPoints: totalPoints,
+        timeStamp: timeStamp,
     });
 
     document.getElementById('name').value = '';
     selectElement.selectedIndex = 0;
     document.getElementById('quantity').value = '';
 
+    displayLoggedValues();
     console.log(loggedValues);
 });
 
@@ -57,7 +60,7 @@ completionButton.addEventListener('click', function() {
     for (var i = 0; i < loggedValues.length; i++) {
         var loggedValue = loggedValues[i];
         message +=
-        'Date/Time: ' + dayjs().format('MMM D, YYYY, hh:mm:ss a') +
+        'Date/Time: ' + dayjs().format('dddd MMM D, YYYY, hh:mm:ss a') +
         '\nName: ' + loggedValue.name +
         '\nProduct Type: ' + loggedValue.option +
         '\nQuantity: ' + loggedValue.quantity +
@@ -72,6 +75,33 @@ completionButton.addEventListener('click', function() {
         console.log('User canceled the prompt')
     }
 });
+
+function displayLoggedValues() {
+    var loggedValuesContainer = document.getElementById('loggedValuesContainer');
+    loggedValuesContainer.innerHTML = ''; 
+
+    var ul = document.createElement('ul');
+    
+
+    for (var i = 0; i < loggedValues.length; i++) {
+        var loggedValue = loggedValues[i];
+        var li = document.createElement('li');
+    li.textContent =
+        'Name: ' +
+        loggedValue.name +
+        ', Product Type: ' +
+        loggedValue.option +
+        ', Quantity: ' +
+        loggedValue.quantity +
+        ', Total Points: ' +
+        loggedValue.totalPoints;
+
+    ul.appendChild(li);
+  
+    }
+
+    loggedValuesContainer.appendChild(ul);
+}
 
 
 
